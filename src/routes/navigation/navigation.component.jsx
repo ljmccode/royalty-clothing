@@ -3,6 +3,8 @@ import { Outlet, Link } from 'react-router-dom';
 
 import { ReactComponent as CrwnLogo } from '../../assests/crown.svg';
 
+import './navigation.styles.scss';
+
 const Navigation = () => {
   return (
     <Fragment>
@@ -14,8 +16,8 @@ const Navigation = () => {
         <Link className='nav-link' to='/shop'>
           SHOP
         </Link>
-        <Outlet />
       </div>
+      <Outlet />
     </Fragment>
   );
 };
