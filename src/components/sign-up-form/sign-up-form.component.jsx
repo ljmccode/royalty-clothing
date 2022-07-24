@@ -16,6 +16,10 @@ const SignUpForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
 
+  const resetFormField = () => {
+    setFormFields(defaultFormFields);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
@@ -27,6 +31,7 @@ const SignUpForm = () => {
         password
       );
       createUserDocumentFromAuth(user, { displayName });
+      resetFormField();
     } catch (error) {
       console.log('error creating user: ', error.message);
     }
