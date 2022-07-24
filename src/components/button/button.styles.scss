@@ -1,15 +1,15 @@
 .button-container {
-  min-width: 165px;
+  min-width: 180px;
   width: auto;
   height: 50px;
   letter-spacing: 0.5px;
   line-height: 50px;
-  padding: 0 35px;
-  font-size: 15px;
+  padding: 0 20px;
+  font-size: 14px;
   background-color: black;
   color: white;
   text-transform: uppercase;
-  font-family: 'Open Sans Condensed';
+  font-family: 'Open Sans', sans-serif;
   font-weight: bolder;
   border: none;
   cursor: pointer;
@@ -24,7 +24,7 @@
     background-color: #4285f4;
     color: white;
     &:hover {
-      background-color: #357ae8;
+      background-color: #035dec;
       border: none;
     }
   }
@@ -38,4 +38,8 @@
       border: none;
     }
   }
+}
+
+button {
+  max-width: 180px;
 }
