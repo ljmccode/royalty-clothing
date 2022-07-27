@@ -6,12 +6,26 @@
   min-height: 90vh;
 
   @media screen and (min-width: 992px) {
-    width: 55%;
+    width: 60%;
   }
 
-  .checkout-titles {
+  .checkout-header {
     display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid darkgray;
+    width: 100%;
+    padding: 10px 0;
+
+    .header-block {
+      width: 23%;
+      &:last-child {
+        width: 8%;
+      }
+    }
+  }
+
+  .total {
+    margin-top: 30px;
+    margin-left: auto;
+    font-size: 36px;
   }
 }
