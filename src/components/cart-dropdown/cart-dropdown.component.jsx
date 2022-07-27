@@ -9,11 +9,12 @@ import CartItem from '../cart-item/cart-item.component';
 import './cart-dropdown.styles.scss';
 
 const CartDropdown = () => {
-  const { cartItems } = useContext(CartContext);
+  const { cartItems, setIsCartOpen } = useContext(CartContext);
   const navigate = useNavigate();
 
   const goToCheckoutHandler = () => {
     navigate('/checkout');
+    setIsCartOpen(false);
   };
 
   return (
@@ -22,7 +23,9 @@ const CartDropdown = () => {
         {cartItems.map((item) => (
           <CartItem key={item.id} cartItem={item} />
         ))}
-        {/* <p className='empty-message'>Your cart is empty</p> */}
+        {cartItems.length === 0 && (
+          <p className='empty-message'>Your cart is empty</p>
+        )}
       </div>
       <Button onClick={goToCheckoutHandler}>Go to checkout</Button>
     </div>
