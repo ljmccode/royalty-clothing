@@ -17,7 +17,7 @@ const Category = () => {
 
   return (
     <Fragment>
-      <h1 className='title'>{category}</h1>
+      <h2 className='category-title'>{category}</h2>
       <div className='shop-category-container'>
         {products &&
           products.map((product) => (
