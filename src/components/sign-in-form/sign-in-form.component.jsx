@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import FormInput from '../form-input/form-input.component';
 import Button, { BUTTON_TYPE_CLASSES } from '../button/button.component';
 
-import './sign-in-form.styles.scss';
+import { SignUpContainer } from './sign-in-form.styles.jsx';
 
 import {
   signInWithGooglePopup,
@@ -57,7 +57,7 @@ const SignInForm = () => {
   };
 
   return (
-    <div className='sign-up-container'>
+    <SignUpContainer>
       <h2>Already have an account?</h2>
       <span>Sign up with your email and password</span>
       <form
@@ -93,7 +93,7 @@ const SignInForm = () => {
           </Button>
         </div>
       </form>
-    </div>
+    </SignUpContainer>
   );
 };
 

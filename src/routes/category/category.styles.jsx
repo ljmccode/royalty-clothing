@@ -1,9 +1,11 @@
-.category-title {
+import styled from 'styled-components';
+
+export const CategoryTitle = styled.div`
   text-align: center;
   text-transform: capitalize;
   font-size: 38px;
-}
-.shop-category-container {
+`;
+export const ShopCategoryContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   width: 85%;
@@ -17,4 +19,4 @@
     grid-template-columns: repeat(4, 1fr);
     column-gap: 20px;
   }
-}
+`;
