@@ -1,16 +1,21 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createReducer } from '@reduxjs/toolkit';
 
-export const userSlice = createSlice({
-  name: 'user',
-  initialState: {
-    currentUser: null,
-  },
-  reducers: {
-    setCurrentUser: (state, action) => {
+import { signInSuccess, signInFailed } from './user.action';
+
+const initialState = {
+  currentUser: null,
+  isLoading: false,
+  error: null,
+};
+
+const userReducer = createReducer(initialState, (builder) => {
+  builder
+    .addCase(signInSuccess, (state, action) => {
       state.currentUser = action.payload;
-    },
-  },
+    })
+    .addCase(signInFailed, (state, action) => {
+      state.error = action.payload;
+    });
 });
 
-export const { setCurrentUser } = userSlice.actions;
-export default userSlice.reducer;
+export default userReducer;
