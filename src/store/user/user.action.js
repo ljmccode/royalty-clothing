@@ -19,3 +19,30 @@ export const emailSignInStart = createAction(
 export const signInSuccess = createAction('SIGN_IN_SUCCESS');
 
 export const signInFailed = createAction('SIGN_IN_FAILED');
+
+export const signUpStart = createAction(
+  'SIGN_UP_START',
+  function prepare(email, password, displayName) {
+    return {
+      payload: {
+        email,
+        password,
+        displayName,
+      },
+    };
+  }
+);
+
+export const signUpSuccess = createAction(
+  'SIGN_UP_SUCCESS',
+  function prepare(user, additionalDetails) {
+    return {
+      payload: {
+        user,
+        additionalDetails,
+      },
+    };
+  }
+);
+
+export const signUpFailed = createAction('SIGN_UP_FAILED');
