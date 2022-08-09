@@ -46,3 +46,9 @@ export const signUpSuccess = createAction(
 );
 
 export const signUpFailed = createAction('SIGN_UP_FAILED');
+
+export const signOutStart = createAction('SIGN_OUT_START');
+
+export const signOutSuccess = createAction('SIGN_OUT_SUCCESS');
+
+export const signOutFailed = createAction('SIGN_OUT_FAILED');
