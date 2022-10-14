@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { useNavigate } from 'react-router-dom';
 
@@ -11,6 +11,7 @@ import {
   googleSignInStart,
   emailSignInStart,
 } from '../../store/user/user.action';
+import { selectCurrentUser } from '../../store/user/user.selector';
 
 const defaultFormFields = {
   email: '',
@@ -19,9 +20,16 @@ const defaultFormFields = {
 
 const SignInForm = () => {
   const dispatch = useDispatch();
+  const currentUser = useSelector(selectCurrentUser);
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (currentUser) {
+      navigate('/');
+    }
+  }, [currentUser]);
 
   const resetFormField = () => {
     setFormFields(defaultFormFields);
@@ -36,7 +44,7 @@ const SignInForm = () => {
 
     try {
       dispatch(emailSignInStart(email, password));
-      navigate('/');
+      // navigate('/');
       resetFormField();
     } catch (error) {
       switch (error.code) {
