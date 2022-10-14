@@ -5,7 +5,11 @@ import {
   InvertedButton,
 } from '../button/button.styles';
 
-export const ProductImage = styled.div`
+type ProductImageProps = {
+  imageUrl: string
+}
+
+export const ProductImage = styled.div<ProductImageProps>`
   width: 100%;
   height: 95%;
   background-size: cover;
