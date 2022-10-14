@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, FormEvent, ChangeEvent } from 'react';
+import { AuthError, AuthErrorCodes } from 'firebase/auth'
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -24,7 +25,7 @@ const SignUpForm = () => {
     setFormFields(defaultFormFields);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (password !== confirmPassword) {
       alert('Passwords do not match');
@@ -34,11 +35,15 @@ const SignUpForm = () => {
       navigate('/');
       resetFormField();
     } catch (error) {
-      console.log('error creating user: ', error.message);
+      if ((error as AuthError).code === AuthErrorCodes.EMAIL_EXISTS){
+        alert('Cannot create user, email already in use')
+      } else {
+        console.log('error creating user: ', error);
+      }
     }
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormFields({ ...formFields, [name]: value });
   };

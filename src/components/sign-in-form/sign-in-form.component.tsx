@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, FormEvent, ChangeEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Auth, AuthError, AuthErrorCodes } from 'firebase/auth'
 
 import { useNavigate } from 'react-router-dom';
 
@@ -39,7 +40,7 @@ const SignInForm = () => {
     dispatch(googleSignInStart());
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
@@ -47,20 +48,17 @@ const SignInForm = () => {
       // navigate('/');
       resetFormField();
     } catch (error) {
-      switch (error.code) {
-        case 'auth/wrong-password':
-          alert('Incorrect email or password');
-          break;
-        case 'auth/user-not-found':
-          alert('No user associated with this email');
-          break;
-        default:
-          console.log('error ', error.message);
+      if ((error as AuthError).code === AuthErrorCodes.INVALID_PASSWORD) {
+        alert('Incorrect email or password');
+      } else if ((error as AuthError).code === AuthErrorCodes.INVALID_EMAIL) {
+        alert('No user associated with this email');
+      } else {
+        console.log('error creating user: ', error);
       }
     }
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormFields({ ...formFields, [name]: value });
   };
