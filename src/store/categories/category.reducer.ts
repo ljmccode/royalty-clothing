@@ -1,13 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchCategories } from './category.action';
+import { Category } from './category.types';
+
+export type CategoriesState = {
+  categories: Category[];
+  isLoading: Boolean;
+  error: string | null | undefined;
+};
+
+const initialState: CategoriesState = {
+  categories: [],
+  isLoading: false,
+  error: null,
+};
 
 export const categorySlice = createSlice({
   name: 'categories',
-  initialState: {
-    categories: [],
-    isLoading: false,
-    error: null,
-  },
+  initialState,
   reducers: {
     // setCategories: (state, action) => {
     //   state.categories = action.payload;
@@ -21,13 +30,13 @@ export const categorySlice = createSlice({
     builder.addCase(fetchCategories.pending, (state, { payload }) => {
       state.isLoading = true;
     });
-    builder.addCase(fetchCategories.rejected, (state, { payload, error }) => {
+    builder.addCase(fetchCategories.rejected, (state, action) => {
       state.isLoading = false;
-      state.categories = payload;
-      state.error = error;
+      state.categories = [];
+      state.error = action.error.message;
     });
   },
 });
 
-export const { setCategories } = categorySlice.actions;
+// export const { setCategories } = categorySlice.actions;
 export default categorySlice.reducer;

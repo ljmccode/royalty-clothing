@@ -1,3 +1,4 @@
+import { UserData } from '../../utils/firebase/firebase.utils';
 import { createReducer } from '@reduxjs/toolkit';
 
 import {
@@ -8,7 +9,13 @@ import {
   signUpFailed,
 } from './user.action';
 
-const initialState = {
+export type UserState = {
+  readonly currentUser: UserData | null;
+  readonly isLoading: boolean;
+  readonly error: Error | null;
+};
+
+const initialState: UserState = {
   currentUser: null,
   isLoading: false,
   error: null,
