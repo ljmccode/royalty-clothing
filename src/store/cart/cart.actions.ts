@@ -1,6 +1,11 @@
 import { createAction } from '@reduxjs/toolkit';
+import { CategoryItem } from './../categories/category.types';
+import { CartItem } from './cart.types';
 
-const addCartItem = (cartItems, productToAdd) => {
+const addCartItem = (
+  cartItems: CartItem[],
+  productToAdd: CategoryItem
+): CartItem[] => {
   const existingCartItem = cartItems.find(
     (cartItem) => cartItem.id === productToAdd.id
   );
@@ -16,12 +21,15 @@ const addCartItem = (cartItems, productToAdd) => {
   return [...cartItems, { ...productToAdd, quantity: 1 }];
 };
 
-const removeCartItem = (cartItems, cartItemToRemove) => {
+const removeCartItem = (
+  cartItems: CartItem[],
+  cartItemToRemove: CartItem
+): CartItem[] => {
   const matchingCartItem = cartItems.find(
     (cartItem) => cartItem.id === cartItemToRemove.id
   );
 
-  if (matchingCartItem.quantity === 1) {
+  if (matchingCartItem && matchingCartItem.quantity === 1) {
     return cartItems.filter((cartItem) => cartItem.id !== cartItemToRemove.id);
   }
 
@@ -32,21 +40,30 @@ const removeCartItem = (cartItems, cartItemToRemove) => {
   );
 };
 
-export const setIsCartOpen = createAction('SET_IS_CART_OPEN');
-export const setCartItems = createAction('SET_CART_ITEMS');
-
-const clearCartItem = (cartItems, cartItemToClear) =>
+const clearCartItem = (cartItems: CartItem[], cartItemToClear: CartItem) =>
   cartItems.filter((cartItem) => cartItem.id !== cartItemToClear.id);
 
-export const addItemToCart = (cartItems, productToAdd) => {
+export const setIsCartOpen = createAction<boolean>('SET_IS_CART_OPEN');
+export const setCartItems = createAction<CartItem[]>('SET_CART_ITEMS');
+
+export const addItemToCart = (
+  cartItems: CartItem[],
+  productToAdd: CategoryItem
+) => {
   const newCartItems = addCartItem(cartItems, productToAdd);
   return setCartItems(newCartItems);
 };
-export const removeItemFromCart = (cartItems, cartItemToRemove) => {
+export const removeItemFromCart = (
+  cartItems: CartItem[],
+  cartItemToRemove: CartItem
+) => {
   const newCartItems = removeCartItem(cartItems, cartItemToRemove);
   return setCartItems(newCartItems);
 };
-export const clearItemFromCart = (cartItems, cartItemToClear) => {
+export const clearItemFromCart = (
+  cartItems: CartItem[],
+  cartItemToClear: CartItem
+) => {
   const newCartItems = clearCartItem(cartItems, cartItemToClear);
   return setCartItems(newCartItems);
 };
