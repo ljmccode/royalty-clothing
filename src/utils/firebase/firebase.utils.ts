@@ -128,7 +128,7 @@ export const signInAuthUserWithEmailAndPassword = async (
 };
 export const signOutUser = async () => await signOut(auth);
 
-export const getCurrentUser = () => {
+export const getCurrentUser = (): Promise<User | null> => {
   return new Promise((resolve, reject) => {
     const unsubscribe = onAuthStateChanged(
       auth,
