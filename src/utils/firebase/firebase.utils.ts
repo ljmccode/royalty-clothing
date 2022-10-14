@@ -7,7 +7,6 @@ import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
-  NextOrObserver,
   User,
 } from 'firebase/auth';
 

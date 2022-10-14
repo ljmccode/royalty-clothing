@@ -6,13 +6,14 @@ import CategoriesPreview from '../categories-preview/categories-preview.componen
 import Category from '../category/category.component';
 import { fetchCategories } from '../../store/categories/category.action';
 
-import { ProductContainerRoutes } from './shop.styles.jsx';
+import { ProductContainerRoutes } from './shop.styles';
 
 const Shop = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(fetchCategories());
+    // eslint-disable-next-line
   }, []);
 
   return (

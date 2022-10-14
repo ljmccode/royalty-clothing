@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 import FormInput from '../form-input/form-input.component';
 import Button from '../button/button.component';
-import { SignUpContainer } from './sign-up-form.styles.jsx';
+import { SignUpContainer } from './sign-up-form.styles';
 import { signUpStart } from '../../store/user/user.action';
 
 const defaultFormFields = {

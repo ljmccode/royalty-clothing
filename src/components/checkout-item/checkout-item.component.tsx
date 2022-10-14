@@ -12,7 +12,7 @@ import {
 import {
   CheckoutImageContainer,
   CheckoutItemContainer,
-} from './checkout-item.styles.jsx';
+} from './checkout-item.styles';
 
 type CheckoutItemProps = {
   cartItem: CartItem

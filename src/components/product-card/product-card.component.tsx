@@ -10,7 +10,7 @@ import {
   ProductCardContainer,
   Footer,
   ProductImage,
-} from './product-card.styles.jsx';
+} from './product-card.styles';
 
 type ProductCardProps = {
   product: CategoryItem

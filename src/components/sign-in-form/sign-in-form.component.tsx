@@ -1,13 +1,13 @@
 import { useState, useEffect, FormEvent, ChangeEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Auth, AuthError, AuthErrorCodes } from 'firebase/auth'
+import { AuthError, AuthErrorCodes } from 'firebase/auth'
 
 import { useNavigate } from 'react-router-dom';
 
 import FormInput from '../form-input/form-input.component';
 import Button, { BUTTON_TYPE_CLASSES } from '../button/button.component';
 
-import { SignUpContainer } from './sign-in-form.styles.jsx';
+import { SignUpContainer } from './sign-in-form.styles';
 import {
   googleSignInStart,
   emailSignInStart,
@@ -30,6 +30,7 @@ const SignInForm = () => {
     if (currentUser) {
       navigate('/');
     }
+    // eslint-disable-next-line
   }, [currentUser]);
 
   const resetFormField = () => {

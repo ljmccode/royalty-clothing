@@ -14,6 +14,7 @@ const App = () => {
 
   useEffect(() => {
     dispatch(checkUserSession());
+    // eslint-disable-next-line
   }, []);
 
   return (
