@@ -1,8 +1,14 @@
 import { createReducer } from '@reduxjs/toolkit';
+import { CartItem } from './cart.types';
 
 import { setCartItems, setIsCartOpen } from './cart.actions';
 
-const initialState = {
+export type CartState = {
+  readonly isCartOpen: Boolean;
+  readonly cartItems: CartItem[];
+};
+
+const initialState: CartState = {
   isCartOpen: false,
   cartItems: [],
 };
