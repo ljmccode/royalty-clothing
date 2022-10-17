@@ -47,6 +47,17 @@ export const ProductCardContainer = styled.div`
       display: flex;
     }
   }
+
+  @media screen and (max-width: 800px) {
+    ${BaseButton},
+    ${GoogleSignInButton},
+    ${InvertedButton} {
+      display: block;
+      opacity: 0.9;
+      min-width: unset;
+      padding: 0 10px;
+    }
+  }
 `;
 
 export const Footer = styled.div`
@@ -54,12 +65,16 @@ export const Footer = styled.div`
   height: 5%;
   display: flex;
   justify-content: space-between;
-  font-size: 1.25rem;
+  font-size: 1rem;
   .name {
     width: 90%;
     margin-bottom: 15px;
   }
   .price {
     width: 10%;
+  }
+
+  @media screen and (min-width: 600px) {
+    font-size: 1.25rem;
   }
 `;

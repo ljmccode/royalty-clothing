@@ -8,10 +8,10 @@ export const CategoryTitle = styled.div`
 export const ShopCategoryContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  width: 85%;
+  width: 90%;
   max-width: 1160px;
   margin: 0 auto;
-  column-gap: 30px;
+  column-gap: 20px;
   row-gap: 30px;
 
   @media screen and (min-width: 992px) {
