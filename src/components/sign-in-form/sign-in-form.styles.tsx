@@ -13,4 +13,12 @@ export const SignUpContainer = styled.div`
     display: flex;
     justify-content: space-between;
   }
+
+  @media screen and (max-width: 800px) {
+    width: 90vw;
+
+    .buttons-container {
+      justify-content: space-evenly;
+    }
+  }
 `;
